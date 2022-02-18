@@ -1,0 +1,54 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<title>Home</title>
+	</head>
+	<body>
+		<h1>You are Home.</h1>
+		<img src="face.jpg" alt="face" height="200" width="200" />
+		<h2>Welcome: {{name}} from {{city}}</h2>
+		<p>State: {{state}}</p>
+		<p>Primary Language: {{languages.primary}}</p>
+		<p>Secondary Language: {{languages.secondary}}</p>
+
+		{{!-- {{this}} FOR ARRAYS --}}
+		<ul>
+			{{#each petsOne}}
+				<li>{{this}}</li>
+			{{/each}}
+		</ul>
+
+		{{! FOR ARRAY OF OBJECTS }}
+		<ul>
+			{{#each pets}}
+				<li>{{name}} is a {{type}}</li>
+			{{/each}}
+		</ul>
+
+		{{! IF...ELSE }}
+		{{#if message}}
+			<p>{{message}}</p>
+		{{else}}
+			<p>No Message For You</p>
+		{{/if}}
+
+		<nav>
+			<a href="/api/shops">Shops API</a>
+			<a href="/api/shops?minRating=4.0">Shop @ 4.0+ Rating</a>
+			<a href="/api/shops/111">Shop ID 111</a>
+			<a href="/fruit">Fruit</a>
+			<a href="/languages">languages</a>
+		</nav>
+
+		<form action="/api/shops" method="POST">
+			Name:
+			<input type="text" name="shopName" />
+			Rating:
+			<input type="number" name="rating" min="0" max="5" step="0.1" />
+			<input type="submit" />
+		</form>
+	</body>
+</html>
